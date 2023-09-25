@@ -43,7 +43,8 @@ public class SecurityConfiguration {
     //webSecurityCustomizer를 제외한 모든 것, 시큐리티를 거친다. 보안과 연관
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.authorizeHttpRequests(authz ->
+        return httpSecurity.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .authorizeHttpRequests(authz ->
                         authz.requestMatchers(
                                         "/favicon.ico", "/js/**", "/css/**", "/static/**", "/", "/index.html"
 
