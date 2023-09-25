@@ -115,8 +115,8 @@ spring:
 # cors
 cors:
   allowed-origins: ${REACT_URL}
-  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
-  allowed-headers: '*'
+  allowed-methods: "GET,POST,PUT,DELETE,OPTIONS"
+  allowed-headers: "*"
   max-age: 3600
 
 # swagger
