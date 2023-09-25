@@ -16,6 +16,7 @@ app:
       - http://192.168.0.203:8080/oauth/redirect  #서윤 ip주소
       - http://192.168.0.47:3000/oauth/redirect   #동은님 아이피주소: 포트번호 ~/oauth/redirect-
       - http://112.222.157.156:5004/login/oauth2/code/kakao
+      - ${AUTH_URL}/login/oauth2/code/kakao
       #- http://192.168.0.50:8080/oauth/redirect  #원희 ip주소
       #- http://192.168.0.203:8080/oauth/redirect #서윤 ip주소
 mybatis:
@@ -44,9 +45,9 @@ spring:
       max-request-size: 12MB
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    jdbc-url: jdbc:mariadb://localhost:3306/finaltest?useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=999999 #jdbc-url: jdbc:mariadb://192.168.0.144:3306/team_d
-    username: root
-    password: green502
+    jdbc-url: jdbc:mariadb://${DB_HOST}:3306/winey_mariaDB?useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=999999 #jdbc-url: jdbc:mariadb://192.168.0.144:3306/team_d
+    username: ${DB_USERNAME}
+    password: ${DB_USERPASSWORD}
   jpa:
     hibernate:
       ddl-auto: update #update #create
@@ -60,7 +61,7 @@ spring:
         order_inserts: true
   data:
     redis:
-      host: localhost
+      host: ${REDIS_HOST}
       port: 6379
   security:
     oauth2:
@@ -113,7 +114,7 @@ spring:
 
 # cors
 cors:
-  allowed-origins: 'http://localhost:8080'
+  allowed-origins: ${REACT_URL}
   allowed-methods: GET,POST,PUT,DELETE,OPTIONS
   allowed-headers: '*'
   max-age: 3600
@@ -124,7 +125,7 @@ springdoc:
     path: /swagger.html
 
 file:
-  dir: D:/home/download
+  dir: /app/download
 
 ---
 
